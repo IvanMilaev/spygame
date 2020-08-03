@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spygame"
+    }
+  },
+  "defaultProject": "spygame",
+  "cli": {
+    "analytics": false
+  }
 }
