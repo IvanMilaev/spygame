@@ -10,6 +10,8 @@ export class TasksComponent implements OnInit {
 	condensed: boolean = false;
 	nowrap: boolean = false;
 
+
+
   selected(e) {
     console.log(e);
   }

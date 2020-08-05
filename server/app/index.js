@@ -69,6 +69,7 @@ app.listen(port, () => {
 
 
 function obtainToken(req, res) {
+  console.log(req);
 
 	var request = new Request(req);
 	var response = new Response(res);
@@ -84,6 +85,7 @@ function obtainToken(req, res) {
 }
 
 function authenticateRequest(req, res, next) {
+  console.log(req);
 
 	var request = new Request(req);
 	var response = new Response(res);

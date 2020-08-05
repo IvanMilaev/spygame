@@ -6,6 +6,7 @@ import { AuthGuardWithForcedLogin } from './auth-guard-with-forced-login.service
 import { AuthGuard } from './auth-guard.service';
 import { authModuleConfig } from './auth-module-config';
 import { AuthService } from './auth.service';
+import { UIShellModule, StructuredListModule } from 'carbon-components-angular';
 
 // We need a factory since localStorage is not available at AOT build time
 export function storageFactory(): OAuthStorage {
@@ -16,6 +17,7 @@ export function storageFactory(): OAuthStorage {
   imports: [
     HttpClientModule,
     OAuthModule.forRoot(),
+
   ],
   providers: [
     AuthService,
@@ -23,10 +25,10 @@ export function storageFactory(): OAuthStorage {
     AuthGuardWithForcedLogin,
   ],
 })
-export class CoreModule {
-  static forRoot(): ModuleWithProviders<CoreModule> {
+export class AuthModule {
+  static forRoot(): ModuleWithProviders<AuthModule> {
     return {
-      ngModule: CoreModule,
+      ngModule: AuthModule,
       providers: [
         { provide: AuthConfig, useValue: authConfig },
         { provide: OAuthModuleConfig, useValue: authModuleConfig },
@@ -35,7 +37,7 @@ export class CoreModule {
     };
   }
 
-  constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor (@Optional() @SkipSelf() parentModule: AuthModule) {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import it in the AppModule only');
     }

@@ -85,65 +85,71 @@ export class AuthService {
       console.table(location.hash.substr(1).split('&').map(kvp => kvp.split('=')));
     }
 
+    //console.log("here")
+
     // 0. LOAD CONFIG:
     // First we have to check to see how the IdServer is
     // currently configured:
-    return this.oauthService.loadDiscoveryDocument()
+    // return this.oauthService.loadDiscoveryDocument()
 
       // For demo purposes, we pretend the previous call was very slow
-      .then(() => new Promise(resolve => setTimeout(() => resolve(), 1000)))
+      // .then(() => new Promise(resolve => setTimeout(() => resolve(), 1000)))
 
       // 1. HASH LOGIN:
       // Try to log in via hash fragment after redirect back
       // from IdServer from initImplicitFlow:
-      .then(() => this.oauthService.tryLogin())
+      return this.oauthService.tryLogin()
 
       .then(() => {
+        console.log("try login answer");
         if (this.oauthService.hasValidAccessToken()) {
           return Promise.resolve();
         }
+        console.log("no valid token");
+        return Promise.reject();
 
         // 2. SILENT LOGIN:
         // Try to log in via a refresh because then we can prevent
         // needing to redirect the user:
-        return this.oauthService.silentRefresh()
-          .then(() => Promise.resolve())
-          .catch(result => {
-            // Subset of situations from https://openid.net/specs/openid-connect-core-1_0.html#AuthError
-            // Only the ones where it's reasonably sure that sending the
-            // user to the IdServer will help.
-            const errorResponsesRequiringUserInteraction = [
-              'interaction_required',
-              'login_required',
-              'account_selection_required',
-              'consent_required',
-            ];
-
-            if (result
-              && result.reason
-              && errorResponsesRequiringUserInteraction.indexOf(result.reason.error) >= 0) {
-
-              // 3. ASK FOR LOGIN:
-              // At this point we know for sure that we have to ask the
-              // user to log in, so we redirect them to the IdServer to
-              // enter credentials.
-              //
-              // Enable this to ALWAYS force a user to login.
-              // this.oauthService.initImplicitFlow();
-              //
-              // Instead, we'll now do this:
-              console.warn('User interaction is needed to log in, we will wait for the user to manually log in.');
-              return Promise.resolve();
-            }
-
-            // We can't handle the truth, just pass on the problem to the
-            // next handler.
-            return Promise.reject(result);
-          });
+        // return this.oauthService.silentRefresh()
+        //   .then(() => Promise.resolve())
+        //   .catch(result => {
+        //     // Subset of situations from https://openid.net/specs/openid-connect-core-1_0.html#AuthError
+        //     // Only the ones where it's reasonably sure that sending the
+        //     // user to the IdServer will help.
+        //     const errorResponsesRequiringUserInteraction = [
+        //       'interaction_required',
+        //       'login_required',
+        //       'account_selection_required',
+        //       'consent_required',
+        //     ];
+        //
+        //     if (result
+        //       && result.reason
+        //       && errorResponsesRequiringUserInteraction.indexOf(result.reason.error) >= 0) {
+        //
+        //       // 3. ASK FOR LOGIN:
+        //       // At this point we know for sure that we have to ask the
+        //       // user to log in, so we redirect them to the IdServer to
+        //       // enter credentials.
+        //       //
+        //       // Enable this to ALWAYS force a user to login.
+        //       // this.oauthService.initImplicitFlow();
+        //       //
+        //       // Instead, we'll now do this:
+        //       console.warn('User interaction is needed to log in, we will wait for the user to manually log in.');
+        //       return Promise.resolve();
+        //     }
+        //
+        //     // We can't handle the truth, just pass on the problem to the
+        //     // next handler.
+        //     return Promise.reject(result);
+        //   });
       })
 
       .then(() => {
         this.isDoneLoadingSubject$.next(true);
+        console.log("wtf");
 
         // Check for the strings 'undefined' and 'null' just to be sure. Our current
         // login(...) should never have this, but in case someone ever calls

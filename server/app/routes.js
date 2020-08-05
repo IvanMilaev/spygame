@@ -1,12 +1,7 @@
 
-//initialize express router
-let router = require('express').Router();
-//set default API response
-router.get('/', function(req, res) {
-    res.json({
-        status: 'API Works',
-        message: 'Welcome to SPY GAME'
-    });
-});
-//Export API routes
-module.exports = router;
+module.exports = (router, app, authenticator) => {
+	router.post("/register", authenticator.registerUser);
+	router.post("/login", app.oauth.grant(), authenticator.login);
+
+	return router;
+};
