@@ -1,0 +1,59 @@
+<ibm-modal [open]="true">
+  <ibm-modal-header> <h3>Регистрация</h3></ibm-modal-header>
+  <form
+    action=""
+    [class.error]="hasErrors"
+    [formGroup]="registerForm"
+    id="register"
+    (ngSubmit)="onSubmit(registerForm.value)"
+  >
+    <section class="bx--modal-content">
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="email"
+          formControlName="email"
+          type="email"
+        />
+      </ibm-label>
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="оперативный псевдоним"
+          formControlName="pseudonym"
+        />
+      </ibm-label>
+      <ibm-label>
+        <input ibmText placeholder="ваш город" formControlName="city" />
+      </ibm-label>
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="пароль"
+          formControlName="password"
+          type="password"
+        />
+      </ibm-label>
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="повторите пароль"
+          formControlName="rpassword"
+          type="password"
+        />
+      </ibm-label>
+    </section>
+    <ibm-modal-footer>
+      <button
+        class="bx--btn bx--btn--secondary"
+        (click)="registration()"
+        type="button"
+      >
+        Я уже зарегистрирован
+      </button>
+      <button class="bx--btn bx--btn--primary" type="submit">
+        Создать аккаунт
+      </button>
+    </ibm-modal-footer>
+  </form>
+</ibm-modal>

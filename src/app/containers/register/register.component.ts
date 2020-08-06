@@ -2,14 +2,17 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
-  public loginForm: FormGroup;
+export class RegisterComponent implements OnInit, AfterViewInit {
+  public registerForm: FormGroup;
   public email: FormControl = new FormControl();
   public password: FormControl = new FormControl();
+  public pseudonym: FormControl = new FormControl();
+  public city: FormControl = new FormControl();
+  public rpassword: FormControl = new FormControl();
   public get hasErrors(): boolean {
     return false;
   }
@@ -23,9 +26,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log('registration');
   }
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
+    this.registerForm = new FormGroup({
       email: this.email,
-      password: this.password
+      pseudonym: this.pseudonym,
+      city: this.city,
+      password: this.password,
+      rpassword: this.rpassword
     });
   }
 

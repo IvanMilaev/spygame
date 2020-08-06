@@ -1,9 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-@import "@carbon/themes/scss/themes";
-//$carbon--theme: $carbon--theme--g10;
-
 $carbon--theme--white: (
-  interactive-01: #626262,
+  interactive-01: #0062ff,
   interactive-02: #171717,
   interactive-03: #0062ff,
   interactive-04: #0062ff,
@@ -62,12 +58,3 @@ $carbon--theme--white: (
   active-01: #bebebe,
   hover-field: #e5e5e5
 ) !default;
-
-// Use the gray 10 theme
-@include carbon--theme();
-@import "~carbon-components/scss/globals/scss/styles.scss";
-$font-path: "~carbon-components/src/globals/fonts";
-
-mark {
-  background: #000000;
-}

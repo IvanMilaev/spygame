@@ -1,1 +1,41 @@
-<p>login works!</p>
+<ibm-modal size="xs" [open]="true">
+  <ibm-modal-header> <h3>Вход в систему</h3></ibm-modal-header>
+  <form
+    action=""
+    [class.error]="hasErrors"
+    [formGroup]="loginForm"
+    id="login"
+    (ngSubmit)="onSubmit(loginForm.value)"
+  >
+    <section class="bx--modal-content">
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="email"
+          formControlName="email"
+          type="email"
+        />
+      </ibm-label>
+      <ibm-label>
+        <input
+          ibmText
+          placeholder="пароль"
+          formControlName="password"
+          type="password"
+        />
+      </ibm-label>
+    </section>
+    <ibm-modal-footer>
+      <button
+        class="bx--btn bx--btn--secondary"
+        (click)="registration()"
+        type="button"
+      >
+        Регистрация
+      </button>
+      <button class="bx--btn bx--btn--primary" type="submit">
+        Войти
+      </button>
+    </ibm-modal-footer>
+  </form>
+</ibm-modal>
