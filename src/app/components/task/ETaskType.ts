@@ -1,0 +1,13 @@
+export enum ETaskType {
+    SEARCH = "ETaskType/SEARCH",
+    RESEARCH = "ETaskType/RESEARCH",
+    FIND_AND_BRING = "ETaskType/FIND_AND_BRING",
+    FIND_AND_TRANSFER = "ETaskType/FIND_AND_TRANSFER",
+    DELIVER = "ETaskType/DELIVER",
+    DISCOVER = "ETaskType/DISCOVER",
+    HIDE = "ETaskType/HIDE",
+    SURVEILLANCE = "ETaskType/SURVEILLANCE",
+    OBSERVATION = "ETaskType/OBSERVATION",
+    MANHUNT = "ETaskType/MANHUNT",
+    INVESTIGATION = "ETaskType/INVESTIGATION",
+}

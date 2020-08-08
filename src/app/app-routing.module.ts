@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./containers/basic/basics.module').then(m => m.BasicsModule)
   },
+  {
+    path: 'agent',
+    loadChildren: () =>
+      import('./containers/agent/agent.module').then(m => m.AgentModule)
+  },
   { path: 'should-login', component: ShouldLoginComponent },
   { path: '**', component: FallbackComponent }
 ];

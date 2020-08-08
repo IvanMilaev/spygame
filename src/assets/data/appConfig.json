@@ -1,0 +1,32 @@
+{
+    "titles": [
+        {
+            "name": "EPriority/RED",
+            "title": "Красный"
+        },
+        {
+            "name": "EPriority/YELLOW",
+            "title": "Желтый"
+        },
+        {
+            "name": "EPriority/GREEN",
+            "title": "Зеленый"
+        },
+        {
+            "name": "EPriority/RED",
+            "title": "Красный"
+        },
+        {
+            "name": "EPriority/RED",
+            "title": "Красный"
+        },
+        {
+            "name": "EPriority/RED",
+            "title": "Красный"
+        },
+        {
+            "name": "EPriority/RED",
+            "title": "Красный"
+        }
+    ]
+}

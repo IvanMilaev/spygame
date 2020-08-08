@@ -7,18 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksComponent implements OnInit {
   border: boolean = true;
-	condensed: boolean = false;
-	nowrap: boolean = false;
-
-
+  condensed: boolean = false;
+  nowrap: boolean = false;
 
   selected(e) {
     console.log(e);
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

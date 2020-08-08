@@ -1,0 +1,21 @@
+<ibm-structured-list
+    [border]="border"
+    [condensed]="condensed"
+    [nowrap]="nowrap"
+    selection="true"
+    (selected)="selected($event)"
+>
+    <ibm-list-header>
+        <ibm-list-column nowrap="true">ID</ibm-list-column>
+        <ibm-list-column nowrap="true">Приоритет</ibm-list-column>
+        <ibm-list-column>Описание</ibm-list-column>
+    </ibm-list-header>
+
+    <ibm-list-row *ngFor="let row of items" [value]="row">
+        <ibm-list-column>{{ row.id }}</ibm-list-column>
+        <ibm-list-column nowrap="true">{{ row.priority }}</ibm-list-column>
+        <ibm-list-column>
+            {{ row.description }}
+        </ibm-list-column>
+    </ibm-list-row>
+</ibm-structured-list>
